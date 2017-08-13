@@ -4,6 +4,7 @@ use Think\Controller;
 
 class XmlController extends Controller{
     public function Xml(){
-        echo $_GET['echostr'];
+        $a=I('get.echostr');
+        var_dump($a);
     }
 }
