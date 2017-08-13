@@ -105,7 +105,11 @@
                 <th>ID</th>
                 <th>报修人</th>
                 <th>报修内容</th>
+                <th>报修标题</th>
+                <th>报修时间</th>
                 <th>电话</th>
+                <th>处理状态</th>
+                <th>报修地址</th>
                 <th>操作</th>
             </tr>
             </thead>
@@ -115,7 +119,11 @@
                         <td><?php echo ($Guarantee["id"]); ?></td>
                         <td><a href="<?php echo U('index?pid='.$Guarantee['id']);?>"><?php echo ($Guarantee["name"]); ?></a></td>
                         <td><?php echo ($Guarantee["content"]); ?></td>
+                        <td><?php echo ($Guarantee["title"]); ?></td>
+                        <td><?php echo (time_format($Guarantee["create_time"])); ?></td>
                         <td><?php echo ($Guarantee["tel"]); ?></td>
+                        <td><?php echo ($Guarantee["status"]); ?></td>
+                        <td><?php echo ($Guarantee["path"]); ?></td>
                         <td>
                             <a title="编辑" href="<?php echo U('edit?id='.$Guarantee['id'].'&pid='.$pid);?>">编辑</a>
                             <a href="<?php echo U('setStatus?ids='.$Guarantee['id'].'&status='.abs(1-Guarantee['status']));?>" class="ajax-get"><?php echo (show_status_op($channel["status"])); ?></a>
@@ -126,6 +134,7 @@
                 <td colspan="6" class="text-center"> aOh! 暂时还没有内容! </td><?php endif; ?>
             </tbody>
         </table>
+        <div class="result page"><?php echo ($page); ?></div>
     </div>
 
         </div>

@@ -9,7 +9,7 @@
             </notempty>
         </h2>
     </div>
-    <form action="{:U()}" method="post" class="form-horizontal">
+    <form action="index.php?s=/Home/Guarantee/add" method="post" class="form-horizontal">
         <input type="hidden" name="pid" value="{$pid}">
         <div class="form-item">
             <label class="item-label">报修人<span class="check-tips"></span></label>
@@ -31,8 +31,20 @@
             </div>
         </div>
         <div class="form-item">
+            <label class="item-label">报修地址<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="text" class="text input-small" name="path" value="{$info.path|default=''}" >
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">报修标题<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="text" class="text input-small" name="title" value="{$info.title|default=''}" >
+            </div>
+        </div>
+        <div class="form-item">
             <input type="hidden" name="id" value="{$info.id|default=''}">
-            <button class="btn submit-btn<!-- ajax-post-->" id="submit" type="submit" target-form="form-horizontal">确 定</button>
+            <button class="btn submit-btn <!--ajax-post-->" id="submit" type="submit" target-form="form-horizontal">确 定</button>
             <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
         </div>
     </form>

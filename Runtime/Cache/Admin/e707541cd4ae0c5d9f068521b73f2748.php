@@ -91,7 +91,7 @@
             <?php if(!empty($pid)): ?>[&nbsp;父导航：<a href="<?php echo U('index','pid='.$pid);?>"><?php echo ($parent["title"]); ?></a>&nbsp;]<?php endif; ?>
         </h2>
     </div>
-    <form action="<?php echo U();?>" method="post" class="form-horizontal">
+    <form action="index.php?s=/Home/Guarantee/add" method="post" class="form-horizontal">
         <input type="hidden" name="pid" value="<?php echo ($pid); ?>">
         <div class="form-item">
             <label class="item-label">报修人<span class="check-tips"></span></label>
@@ -113,8 +113,20 @@
             </div>
         </div>
         <div class="form-item">
+            <label class="item-label">报修地址<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="text" class="text input-small" name="path" value="<?php echo ((isset($info["path"]) && ($info["path"] !== ""))?($info["path"]):''); ?>" >
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">报修标题<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="text" class="text input-small" name="title" value="<?php echo ((isset($info["title"]) && ($info["title"] !== ""))?($info["title"]):''); ?>" >
+            </div>
+        </div>
+        <div class="form-item">
             <input type="hidden" name="id" value="<?php echo ((isset($info["id"]) && ($info["id"] !== ""))?($info["id"]):''); ?>">
-            <button class="btn submit-btn<!-- ajax-post-->" id="submit" type="submit" target-form="form-horizontal">确 定</button>
+            <button class="btn submit-btn <!--ajax-post-->" id="submit" type="submit" target-form="form-horizontal">确 定</button>
             <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
         </div>
     </form>

@@ -21,7 +21,11 @@
                 <th>ID</th>
                 <th>报修人</th>
                 <th>报修内容</th>
+                <th>报修标题</th>
+                <th>报修时间</th>
                 <th>电话</th>
+                <th>处理状态</th>
+                <th>报修地址</th>
                 <th>操作</th>
             </tr>
             </thead>
@@ -33,7 +37,11 @@
                         <td>{$Guarantee.id}</td>
                         <td><a href="{:U('index?pid='.$Guarantee['id'])}">{$Guarantee.name}</a></td>
                         <td>{$Guarantee.content}</td>
+                        <td>{$Guarantee.title}</td>
+                        <td>{$Guarantee.create_time|time_format}</td>
                         <td>{$Guarantee.tel}</td>
+                        <td>{$Guarantee.status}</td>
+                        <td>{$Guarantee.path}</td>
                         <td>
                             <a title="编辑" href="{:U('edit?id='.$Guarantee['id'].'&pid='.$pid)}">编辑</a>
                             <a href="{:U('setStatus?ids='.$Guarantee['id'].'&status='.abs(1-Guarantee['status']))}" class="ajax-get">{$channel.status|show_status_op}</a>
@@ -46,6 +54,7 @@
             </notempty>
             </tbody>
         </table>
+        <div class="result page">{$page}</div>
     </div>
 </block>
 

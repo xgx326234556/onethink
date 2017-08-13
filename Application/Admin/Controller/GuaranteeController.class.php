@@ -1,5 +1,7 @@
 <?php
 namespace Admin\Controller;
+use Think\Page;
+
 class GuaranteeController extends AdminController{
  public function add(){
      if(IS_POST){
@@ -25,9 +27,13 @@ class GuaranteeController extends AdminController{
      }
     public function index(){
         /* 获取频道列表 */
-        $list = M('Guarantee')->select();
-
+        $Guarantee = M('Guarantee');//实列化Guarantee对象
+        $count =$Guarantee->count();//获取查询条数
+        $Page=new Page($count,2);//实例化分页类 传入总记录数和每页显示的记录数(2)
+        $list = $Guarantee->limit($Page->firstRow.','.$Page->listRows)->select();
+        $show=$Page->show();//分页显示输出
         $this->assign('index', $list);
+        $this->assign('page',$show);
         $this->meta_title = '导航管理';
         $this->display('index');
     }
