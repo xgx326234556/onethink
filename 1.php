@@ -3,7 +3,8 @@ if($_GET['echostr']){
     echo $_GET['echostr'];
 }else{
     $xml=file_get_contents("php://input");
-    file_put_contents('wchat.log',$xml);
+    //file_put_contents('wchat.log',$xml);
+    Log::write('wchat.log',$xml);
     $simpleXml=simplexml_load_string($xml);
     $request = [];
     foreach ($simpleXml as $name=>$value){
