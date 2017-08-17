@@ -30,6 +30,7 @@ class HomeController extends Controller {
         if(!C('WEB_SITE_CLOSE')){
             $this->error('站点已经关闭，请稍后访问~');
         }
+        WeiController::getAccess();
     }
 
 	/* 用户登录检测 */

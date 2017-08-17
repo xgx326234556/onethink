@@ -63,11 +63,15 @@ class UserController extends HomeController {
 			/* 调用UC登录接口登录 */
 			$user = new UserApi;
 			$uid = $user->login($username, $password);
+
 			if(0 < $uid){ //UC登录成功
 				/* 登录用户 */
 				$Member = D('Member');
+                $data['openid'] = session('opend_id');
+
 				if($Member->login($uid)){ //登录用户
 					//TODO:跳转到登录前页面
+                    $Member->where(['uid'=>$uid])->save($data); // 根据条件更新记录
 					$this->success('登录成功！',U('Home/Index/index'));
 				} else {
 					$this->error($Member->getError());

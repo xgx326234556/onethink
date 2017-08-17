@@ -11,8 +11,10 @@ namespace Home\Controller;
 
 use Think\Controller;
 use Think\Page;
+use EasyWeChat\Foundation\Application;
+require './vendor/autoload.php'; // 引入 composer 入口文件
 
-class GuaranteeController extends Controller
+class GuaranteeController extends LoginController
 {
     public function add(){
         if(IS_POST){
@@ -37,6 +39,7 @@ class GuaranteeController extends Controller
 
     }
     public function my(){
+
         $this->display('my');
     }
     public function online(){
@@ -52,16 +55,21 @@ class GuaranteeController extends Controller
             $this->display('online');
 
     }
+    //实现小区通知业务逻辑
     public function notice(){
-        $Document= M('Document')->select();//实列化Guarantee对象
+        $Document= M('Document')->where(['category_id'=>39])->select();//实列化Guarantee对象
         $this->assign('index',$Document);
         $this->meta_title = '导航管理';
         $this->display('notice');
     }
+    //实现小区通知详情业务逻辑
     public function sort(){
         $id=I('get.id');
         $DocumentArticle=M('DocumentArticle')->where(['id'=>$id])->select();
         $Document=M('Document')->where(['id'=>$id])->select();
+        $data['view'] = $Document[0]['view']+1;
+        //var_dump($data['view']);exit;
+        M('Document')->where(['id'=>$id])->save($data);
         $Picture=M('Picture')->where(['id'=>$Document[0]['cover_id']])->select();
         $this->assign('Document',$Document);
         $this->assign('DocumentArticle',$DocumentArticle);
@@ -69,4 +77,26 @@ class GuaranteeController extends Controller
         $this->display('notice-detail');
 
     }
+    //小区活动业务逻辑
+    public function activity(){
+        $Document= M('Document')->where(['category_id'=>41])->select();//实列化Guarantee对象
+        $this->assign('index',$Document);
+        $this->meta_title = '导航管理';
+        $this->display('notice');
+    }
+    //实现商家活动业务逻辑
+    public function seller(){
+        $Document= M('Document')->where(['category_id'=>42])->select();//实列化Guarantee对象
+        $this->assign('index',$Document);
+        $this->meta_title = '导航管理';
+        $this->display('notice');
+    }
+    //实现商家活动业务逻辑
+    public function Shop(){
+        $Document= M('Document')->where(['category_id'=>43])->select();//实列化Guarantee对象
+        $this->assign('index',$Document);
+        $this->meta_title = '导航管理';
+        $this->display('notice');
+    }
+
 }

@@ -8,8 +8,8 @@
             </div>
             <div class="col-xs-10">
                 <p class="title"><a href="{:U('guarantee/sort?id='.$Document['id'])}">{$Document.title}</a></p>
-                <p class="intro">{$Document.intro}</p>
-                <p class="info">浏览: 199 <span class="pull-right"><?=date('Y-m-d',$Picture[0]['create_time'])?></span> </p>
+                <p class="intro">{$Document.description}</p>
+                <p class="info">浏览:{$Document.view} <span class="pull-right"><?=date('Y-m-d',$Picture[0]['create_time'])?></span> </p>
             </div>
         </div>
     </volist>

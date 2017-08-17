@@ -93,6 +93,22 @@ return array(
         'replace'  => false, //存在同名是否覆盖
         'hash'     => true, //是否生成hash编码
         'callback' => false, //检测文件是否存在回调函数，如果存在返回文件信息数组
-    ), //附件上传配置（文件上传类配置）
+    ),//附件上传配置（文件上传类配置）
+    'wechat_config'=>[
+        'debug'  => true,
+        'app_id' => 'wxdce768a226f1440f',
+        'secret' => '6fa86d4857f06129d52847bdc9cba8c5',
+        'token'  => '1234',
+        // 'aes_key' => null, // 可选
+        'log' => [
+            'level' => 'debug',
+            'file'  => '/www/wwwroot/think/easywechat.log', // XXX: 绝对路径！！！！
+        ],
+        'oauth' => [
+            'scopes'   => ['snsapi_userinfo'],
+            'callback' => 'index.php?s=/Home/Wei/callback',
+        ],
+        //...
+    ]
 
 );
